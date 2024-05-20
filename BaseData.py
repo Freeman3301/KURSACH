@@ -1,5 +1,6 @@
 import psycopg2
 
+
 class BaseData:
     def __init__(self) -> None:
         self.conn = psycopg2.connect(
@@ -22,4 +23,19 @@ class BaseData:
             """)
         return [self.getData(name) for name in self.cursor.fetchall()]
 
-base = BaseData()
+    def deleteData(self, data):
+        delete_query = "DELETE FROM admin WHERE adminid = %s"
+        self.cursor.execute(delete_query, (data))
+        self.conn.commit()
+    
+    def getListColumns(self, name_table):
+        self.cursor.execute("""
+            SELECT column_name FROM information_schema.columns 
+            WHERE table_name = %s """, name_table
+        )
+        return [row[0] for row in self.cursor.fetchall()]
+    
+    def dowonloadData(self, column_names, values):
+        insert_query = "INSERT INTO admin (" + ", ".join(column_names) + ") VALUES (%s, %s, %s, %s)"
+        self.cursor.execute(insert_query, values)
+        self.conn.commit()
