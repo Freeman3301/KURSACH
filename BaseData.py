@@ -50,3 +50,7 @@ class BaseData:
         insert_query = "INSERT INTO " + name_table + " (" + columns + ") VALUES (" + placeholders + ")"
         self.cursor.execute(insert_query, values)
         self.conn.commit()
+    
+    def CloseConnectionWithBase(self):
+        self.cursor.close()
+        self.conn.close()

@@ -1,9 +1,10 @@
 import sys
 from PyQt5.QtCore import QObject, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableView, QPushButton, QDialog, QFormLayout, QLineEdit, QLabel, QDateEdit
+from PyQt5.QtWidgets import QLineEdit
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from BaseData import BaseData
 from UI import MainWindow, Dialog
+
 class Controller(QObject):
     def __init__(self) -> None:
         super().__init__()

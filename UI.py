@@ -1,7 +1,6 @@
 import sys
 import psycopg2
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableView, QPushButton, QDialog, QFormLayout, QLineEdit, QLabel, QDateEdit, QComboBox
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QMainWindow, QTableView, QPushButton, QDialog, QFormLayout, QLineEdit, QLabel, QComboBox
 
 class MainWindow(QMainWindow):
     def __init__(self):
