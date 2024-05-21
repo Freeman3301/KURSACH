@@ -6,15 +6,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Настройка главного окна
         self.setWindowTitle("Пример приложения PostgreSQL")
         self.resize(900, 400)
 
-        # Создание табличного представления для отображения данных
         self.table_view = QTableView(self)
         self.table_view.setGeometry(10, 10, 580, 300)
 
-        # Создание кнопок для выполнения операций
         self.add_button = QPushButton("Добавить", self)
         self.add_button.setGeometry(10, 320, 100, 30)
 
@@ -26,7 +23,7 @@ class MainWindow(QMainWindow):
 
         self.combo_box = QComboBox(self)
         self.combo_box.setGeometry(600, 0, 200, 30)
-    
+
     def setting_dorp_down_list(self, names_columns):
         self.combo_box.addItems([', '.join(map(str, name)) for name in names_columns])
 

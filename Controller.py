@@ -12,7 +12,6 @@ class Controller(QObject):
         self.list_name_table = self.base.getListNamesTables()
         self.list_base = self.base.getListTable()
         self.num_table = 0
-        #self.list_names_columns = self.base.getListColumns(list_name_table[self.num_table])
 
         self.main_window = MainWindow()
         self.add_dialog = Dialog(self.main_window, "Изменение Данных", "Сохранить")
@@ -26,12 +25,11 @@ class Controller(QObject):
         self.add_dialog.button.clicked.connect(self.save_data)
         self.edit_dialog.button.clicked.connect(self.edit_data)
         
-
+        self.main_window.setting_dorp_down_list(self.list_name_table)
         self.refresh_data()
         self.main_window.show()
 
     def refresh_data(self):
-        self.main_window.setting_dorp_down_list(self.list_name_table)
 
         data = self.base.getData(self.list_name_table[self.num_table])
         data.sort(key=lambda x : x[0])
