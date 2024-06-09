@@ -7,22 +7,22 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Пример приложения PostgreSQL")
-        self.resize(900, 400)
+        self.resize(1500, 600)
 
         self.table_view = QTableView(self)
-        self.table_view.setGeometry(10, 10, 580, 300)
+        self.table_view.setGeometry(10, 10, 1000, 300)
 
         self.add_button = QPushButton("Добавить", self)
-        self.add_button.setGeometry(10, 320, 100, 30)
+        self.add_button.setGeometry(1050, 60, 200, 30)
 
         self.edit_button = QPushButton("Изменить", self)
-        self.edit_button.setGeometry(120, 320, 100, 30)
+        self.edit_button.setGeometry(1050, 110, 200, 30)
 
         self.delete_button = QPushButton("Удалить", self)
-        self.delete_button.setGeometry(230, 320, 100, 30)
+        self.delete_button.setGeometry(1050, 160, 200, 30)
 
         self.combo_box = QComboBox(self)
-        self.combo_box.setGeometry(600, 0, 200, 30)
+        self.combo_box.setGeometry(1050, 10, 200, 30)
 
     def setting_dorp_down_list(self, names_columns):
         self.combo_box.addItems([', '.join(map(str, name)) for name in names_columns])
@@ -53,3 +53,7 @@ class Dialog(QDialog):
             input_field = QLineEdit(self)
             self.layout.addRow(label, input_field)
             self.dynamic_widgets.extend([label, input_field])
+
+class ErrorDilog(QDialog):
+    def __init__(self, parent):
+        super().__init__(parent)

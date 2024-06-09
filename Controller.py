@@ -11,6 +11,7 @@ class Controller(QObject):
         self.base = BaseData()
         self.list_name_table = self.base.getListNamesTables()
         self.list_base = self.base.getListTable()
+        #self.list_names_columns = self.base.getListColumns(self.list_name_table[self.num_table])
         self.num_table = 0
 
         self.main_window = MainWindow()
@@ -42,6 +43,7 @@ class Controller(QObject):
             for col_num, value in enumerate(row):
                 item = QStandardItem(str(value))
                 model.setItem(row_num, col_num, item)
+                model.setHorizontalHeaderLabels(self.base.getListColumns(self.list_name_table[self.num_table]))
         self.main_window.table_view.setModel(model)
 
     def open_add_dialog(self):
